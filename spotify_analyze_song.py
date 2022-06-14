@@ -81,18 +81,13 @@ class Spotipy_Instance(): # Create env var SPOTIPY_CLIENT_ID SPOTIPY_CLIENT_SECR
         segments = data.get('segments')
         
         for element in segments:
-            
-            if time - element.get('start')*1000 <= -500 and time - element.get('start')*1000 < 0:
+            if time - element.get('start')*1000 >= -500 and time - element.get('start')*1000 < 0:
                 current_data = element
 
         return current_data
-
-    def draw(self):
-        data = self.get_current_data()
-
-
 
 sp = Spotipy_Instance()
 
 
 print(sp.get_current_data())
+print(sp.get_current_song_time())
